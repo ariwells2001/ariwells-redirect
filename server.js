@@ -1,15 +1,16 @@
 const bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
-var PORT = 3000;
+var PORT = 3001;
 
 app.use(bodyParser.json());
-app.get("/aqararesponse", function (req, res) { console.log("aqararesponse");
- console.log(req.query.code);
- console.log(req.query.state);
- authCode = req.query.code;
- authState = req.query.state;
- let result = { message: 'Success', authCode: authCode, authState: authState }
+app.post("/aqararesponse", function (req, res) { console.log("aqararesponse");
+ console.log(req.body);
+ console.log(req.body.code);
+ console.log(req.body.state);
+ authCode = req.body.code;
+ authState = req.body.state;
+ let result = { message: 'Success', 'authCode': authCode, 'authState': authState }
  console.log("result: ", result);
  res.json(result);
 
